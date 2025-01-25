@@ -1,2 +1,25 @@
-# bioinfo_tutorial
-by doing this project you will get the idea of the basics of the bioinformatics tool available online.
+# Bioinformatics Tutorial
+This project will give you an idea of the basics of the online bioinformatics tool.
+## Choosing the right protein to practice:
+Choose a protein that is 25-100 kDa. Avoid multisubunit proteins (although you can select a single subunit to practice), intrinsically disordered proteins, and membrane proteins.
+( you can practice on all the proteins but when starting it is better to follow the instructions mentioned above)
+After choosing a protein, retrieve its sequence from [NCBI](https://www.ncbi.nlm.nih.gov/protein/), [SwissProt/UniProt](https://www.expasy.org/search/uniprot). Along with the protein sequence download the fasta file of the nucleotide sequence as well.
+## Finding out the chemical aspects of the chosen protein:
+Go to the  [ProtParam](https://web.expasy.org/protparam/) and put the sequence in the query box. protparam will provide you with the molecular weight, chemical pI, atomic and amino acid composition of protein, and many more chemical aspects.
+One of the chemical aspects is the molar extinction coefficient, which can be calculated  by the following formula:
+ε(selected protein at 280 nm) (M-1 cm-1) = (#Trp)(5,500) + (#Tyr)(1,490) + (#cystine)(l25)
+Match the calculated molar extinction coefficient with the one from protparam.
+## Using BLASTp and aligning the multiple sequence:
+ Go to NCBI BLASTp and pick the 5 highest matching sequences that belong to different organisms. (for example, if you have chosen any human protein, try to pick up the sequence in organisms like chimpanzees, mice, etc. Your choice of organism could also be like some organisms are closely related to humans and some are distant). After getting 5 different sequences align them using different tools like [Tcoffee](https://tcoffee.crg.eu/apps/tcoffee/do:regular), [clustalW](https://www.genome.jp/tools-bin/clustalw), or [clustal omega](https://www.ebi.ac.uk/jdispatcher/msa/clustalo). Align the sequence and analyze the phylogenetic tree that these servers give you and you will see the evolutionary relationship between the organisms you have chosen. 
+## Using the nucleotide sequence to express the protein:
+In the downloaded nucleotide sequence, try to locate the start and stop codon, start codon cvan be located using the [ORF Finder](https://www.bioinformatics.org/sms2/orf_find.html). It might give you many ORFs, but you can translate them and see which ones giving you the right protein sequence. After locating the start and stop codon, go to the [expasy translate tool](https://web.expasy.org/translate/). This tool will give you the sequence of the protein in all 6 frames and you can decide which frame seems closer to your original protein sequence by using the multiple sequence alignment. Another tool [emboss backtranseq](https://www.ebi.ac.uk/Tools/st/emboss_backtranseq/) will give you the nucleotide sequence from where you might have got that protein and you can align it with the downloaded nucleotide sequence or you get the mRNA sequence from [ena browser](https://www.ebi.ac.uk/ena/browser/home).
+## Predicting the secondary structure, enzyme classes and subclasses (if you have chosen any enzyme as your protein):
+To predict the secondary structure, you can use various onlnine available tools, [GOR4](https://npsa-prabi.ibcp.fr/cgi-bin/npsa_automat.pl?page=npsa_gor4.html), or you can use [chou & fasman server](http://www.biogem.org/tool/chou-fasman/index.php), or [Jpred 4](https://www.compbio.dundee.ac.uk/jpred/). After predicting the secondary structure, you can compare the structures obtained by using the different seervers and you can compare those structures with the information available on the PDB.
+To predict the enzyme classes or subclasses, you can use [EzyPred](http://www.csbio.sjtu.edu.cn/bioinf/EzyPred/). 
+## Predicting the tertiary structure of the chosen protein:
+To predict the tertiary structure of protein, there are three approaches:
+1. Homology Modelling: The structure is predicted based on availability of 3D structure of similar protein and the servers use those available structures as template. The servers that follow this approach are [Swiss Model](https://swissmodel.expasy.org/), [Phyre2](http://www.sbg.bio.ic.ac.uk/phyre2/), [Modeller](https://salilab.org/modeller/). 
+2. Ab-initio Modelling: it is like making the structure from scratch, where there is unavailability of similar structures. The servers that you can use are [Rosetta](https://www.rosettacommons.org/), or [QUARK](https://zhanggroup.org/QUARK/).
+3. Threading: In this method, different parts of proteins are made using the available structures as template and then joining them together, its like fold recognition model. the servers that can be used are [I-TASSER](https://zhanggroup.org/I-TASSER/), [RaptorX](http://raptorx.uchicago.edu/), [SPARKS-X](https://sparks-lab.org/server/SPARKS-X/).
+## Aligning the predicted structure with the available structure:
+After getting the structure different servers we need to compare the already available structure on PDB. for this comparison you can use PyMol or Chimera, you need to dowload these tools and you can open the structure usiong pymol and you can open the structure from pdb and align them. you can change the colors, type of model you want like ribbon structure or ball and stick model etc.
